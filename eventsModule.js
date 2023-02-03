@@ -4,8 +4,6 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
         // character typing event listener
 
         // click on download button event listener
-
-        // click on restart button event listener
     };
 
     return {
