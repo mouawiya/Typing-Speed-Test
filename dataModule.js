@@ -156,13 +156,20 @@ var dataModule = (function (){
             appData.words.testWords = result;
         },
 
-        getListofTestWords: function(){}, // get list of test words: words.testWords
+        // get list of test words: words.testWords
+        getListofTestWords: function(){
+            return appData.words.testWords;
+        }, 
 
         moveToNewWord: function(){}, /* increments the currentWordIndex - updates the current word
         (appData.words.currentWord) by creating a new instance of the word class - updates numOfCorrectWords,
         numOfCorrectCharacters and numOfTestCharacters */
 
         updateCurrentWord: function(value) {}, // updates current word using user input
+
+        getLineReturn(){
+            return lineReturn;
+        },
 
         // just a testing method
         returnData(){

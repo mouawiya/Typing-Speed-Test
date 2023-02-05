@@ -19,6 +19,12 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
 
             // fill the list of test words: UIModule
 
+                // get the array with the test words
+                var testWords = dModule.getListofTestWords();
+                // get the line return variable
+                var lineReturn = dModule.getLineReturn();
+                uModule.fillContent(testWords, lineReturn);
+
             // set the total test time
 
             // update time left: dataModule
