@@ -3,26 +3,26 @@ var UIModule = (function (){
     // classes used to select HTML elements
     var DOMElements = {
         // indicators - test control
-        timeLeft:'', // HTML element displaying time left
+        timeLeft: document.getElementById('timeLeft'), // HTML element displaying time left
 
         // test results
-        wpm:'', 
-        wpmChange:'', 
-        cpm:'', 
-        cpmChange:'', 
-        accuracy:'', 
-        accuracyChange:'',
+        wpm: document.getElementById('wpm'), 
+        wpmChange: document.getElementById('wpmChange'), 
+        cpm: document.getElementById('cpm'),
+        cpmChange: document.getElementById('cpmChange'),
+        accuracy: document.getElementById('accuracy'), 
+        accuracyChange: document.getElementById('accuracyChange'),
 
         // user input
-        textInput:'', 
-        nameInput:'',
+        textInput: document.querySelector('#input'),
+        nameInput: document.querySelector('.form-group'),
 
         // test words
         content: document.getElementById('content'), 
         activeWord:'',
 
         // modal
-        modal:''
+        modal: $('#myModal')
     };
 
     // a method that split each word into characters
@@ -65,7 +65,9 @@ var UIModule = (function (){
 
     // Indicators - Test Control
 
-        updateTimeLeft: function(){},
+        updateTimeLeft: function(x){
+            DOMElements.timeLeft.innerHTML = x;
+        },
     
     // results
         
