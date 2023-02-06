@@ -80,6 +80,12 @@ var dataModule = (function (){
                 return currentWord + randomPunctuation;
             });
         };
+    
+    // character call back used to calculate the number of correct characters inside the current word
+    var nbCorrectChar;
+    var charCallback = function(currentElement, index){
+        nbCorrectChar += (currentElement == this.characters.user[index])? 1 : 0; // this check if we ill increase te value of x by 1 or 0 deppendin on the condition (it can be written with an if())
+    };    
 
     var appData = {
         indicators: {
@@ -120,7 +126,28 @@ var dataModule = (function (){
 
     // update method: updates the word using the word typed by the user
     word.prototype.update = function(value){
+        
+        // update the user input
+        this.value.user = value;
 
+        // update the words status (correct or not)
+        this.value.isCorrect = (this.value.correct == this.value.user);
+
+        // update user characters
+        this.characters.user = this.value.user.split('');
+
+        // calculate the number of correct characters
+
+        // example
+        // correct: ['w', 'o', 'r', 'd']
+        // user: ['w', 'o', 'o', 'w', 'w', 'w', 'w', 'w']
+        var nbCorrectChar = 0; 
+
+        // the charCallback function is defined above
+        charCallback2 = charCallback.bind(this); // we used this because "this" in the charCallBack function will refere to the global object, but "bind" will link it to our instance class
+        this.characters.correct.forEach(charCallback2);
+
+        this.characters.totalCorrect = nbCorrectChar;
     };
 
     return {
