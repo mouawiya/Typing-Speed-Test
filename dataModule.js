@@ -90,7 +90,7 @@ var dataModule = (function (){
             numOfCorrectWords: 0, numOfCorrectCharacters: 0, numOfTestCharacters:0
         },
         words: {
-            currentWordIndex:0, testWords: [], currentWord: {}
+            currentWordIndex:-1, testWords: [], currentWord: {}
         },
     };
 
@@ -101,7 +101,22 @@ var dataModule = (function (){
     //     characters: {correct: [], user: [], totalCorrect: 0, totalTest:0}
     // }
 
-    var word = function(index){};
+    var word = function(index){
+        // word values: correct vs user's
+        this.value = {
+            correct: appData.words.testWords[index] + ' ', // the space added represent the space between the words
+            user: '',
+            isCorrect: false
+        };
+
+        // characters: correct vs user's
+        this.characters = {
+            correct: this.value.correct.split(''),
+            user: [],
+            totalCorrect: 0,
+            totalTest: this.value.correct.length // number of characters inside the correct value
+        }
+    };
 
     return {
     //indicators - test Control
@@ -168,11 +183,26 @@ var dataModule = (function (){
         // get list of test words: words.testWords
         getListofTestWords: function(){
             return appData.words.testWords;
-        }, 
+        },
 
-        moveToNewWord: function(){}, /* increments the currentWordIndex - updates the current word
+        /* increments the currentWordIndex - updates the current word
         (appData.words.currentWord) by creating a new instance of the word class - updates numOfCorrectWords,
         numOfCorrectCharacters and numOfTestCharacters */
+
+        moveToNewWord: function(){
+            if (appData.words.currentWordIndex > -1){
+                // update the number of correct words
+
+                // update the number of correct characters
+
+                // update number of test characters
+            }
+            
+            appData.words.currentWordIndex++;
+            var currentIndex = appData.words.currentWordIndex;
+            var newWord = new word(currentIndex);
+            appData.words.currentWord = newWord;
+        }, 
 
         updateCurrentWord: function(value) {}, // updates current word using user input
 
