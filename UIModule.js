@@ -57,6 +57,11 @@ var UIModule = (function (){
         return array.join(''); // the join is a predefined function that joins the elements of an array, and '' is used because the is no seperator
     };
 
+    var userValue;
+    var returnCharClass = function(currentCharacter, index){
+        return (index < userValue.length)? (currentCharacter == userValue[index] ? 'correctCharacter': 'wrongCharacter') : '0';
+    };
+
     return {
 
     // get DOM elements
@@ -149,7 +154,24 @@ var UIModule = (function (){
             // hihglight current word
             activeWord.className = 'activeWord';
 
-            // format indivisual character
+            // format indivisual characters
+            var correctValue = wordObject.value.correct;
+            userValue = wordObject.value.user;
+
+            // correct value 'word1 '
+            // user value    'wwrd'
+            var classes = Array.prototype.map.call(correctValue, returnCharClass);
+
+            // get active word
+            var activeWord = DOMElements.activeWord;
+            // HTML collection and forEach won't work on it
+            var characters = activeWord.children;
+
+            // add classes to children
+            for (var i=0; i<characters.length; i++){
+                characters[i].removeAttribute('class');
+                characters[i].className = classes[i];
+            }
         },
 
         // store the right html element inside the active word property of the DOMElement

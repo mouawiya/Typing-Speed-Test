@@ -2,7 +2,7 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
     var addEventListeners = function(){
         
         // character typing event listener
-        uModule.getDOMElements().textInput.addEventListener('keypress', function(event){
+        uModule.getDOMElements().textInput.addEventListener('input', function(event){
             
             // if the test ended, do nothing
             if (dModule.testEnded()){
@@ -20,6 +20,10 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
             dModule.updateCurrentWord(typedWord);
 
             // format the active word
+                // format the active word: UIModule
+                // get the current word value
+                var currentWord = dModule.getCurrentWord();
+                uModule.formatWord(currentWord);
 
             // check if the user pressed space or enter
             if(uModule.spacePressed() || uModule.enterPressed()){
