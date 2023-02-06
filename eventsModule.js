@@ -41,10 +41,17 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
                 dModule.moveToNewWord();
 
             // set active word: UIModule
+                // get the correct current word index
+                var index = dModule.getCurrentWordIndex();
+                uModule.setActiveWord(index);
 
             // format the active word: UIModule
+                // get the current word value
+                currentWord = dModule.getCurrentWord();
+                uModule.formatWord(currentWord);
 
             // focus on text input: UIModule
+                uModule.inputFocus();
 
             // add event listeners 
             addEventListeners();

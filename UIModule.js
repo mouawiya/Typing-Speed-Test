@@ -79,7 +79,9 @@ var UIModule = (function (){
     
     // user input
         
-        inputFocus: function(){},
+        inputFocus: function(){
+            DOMElements.textInput.focus();
+        },
 
         isNameEmpty: function(){},
 
@@ -135,9 +137,19 @@ var UIModule = (function (){
             
         },
 
-        formatWord: function(wordObject, wordHTML){},
+        formatWord: function(wordObject){
+            var activeWord = DOMElements.activeWord;
 
-        setActiveWord: function(index){},
+            // hihglight current word
+            activeWord.className = 'activeWord';
+
+            // format indivisual character
+        },
+
+        // store the right html element inside the active word property of the DOMElement
+        setActiveWord: function(index){
+            DOMElements.activeWord = DOMElements.content.children[index];
+        },
 
         deactivateCurrentWord: function(){},
 

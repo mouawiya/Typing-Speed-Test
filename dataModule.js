@@ -197,12 +197,28 @@ var dataModule = (function (){
 
                 // update number of test characters
             }
-            
+
             appData.words.currentWordIndex++;
             var currentIndex = appData.words.currentWordIndex;
             var newWord = new word(currentIndex);
             appData.words.currentWord = newWord;
-        }, 
+        },
+
+        // get the current word index
+        getCurrentWordIndex(){
+            return appData.words.currentWordIndex;
+        },
+
+        // get current word
+        getCurrentWord(){
+            var currentWord = appData.words.currentWord;
+            return {
+                value: {
+                    correct: currentWord.value.correct,
+                    user: currentWord.value.user
+                }
+            }
+        },
 
         updateCurrentWord: function(value) {}, // updates current word using user input
 
