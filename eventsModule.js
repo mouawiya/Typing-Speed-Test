@@ -2,7 +2,41 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
     var addEventListeners = function(){
         
         // character typing event listener
+        uModule.getDOMElements().textInput.addEventListener('keypress', function(event){
+            
+            // if the test ended, do nothing
+            if (dModule.testEnded()){
+                return;
+            }
+            // if the test has not started yet, start the test and countdown
+            if (!dModule.testStarted()){
+                // start the test
+            }
 
+            // get typed word: UI module
+            var typedWord = uModule.getTypeWord();
+
+            // update current word: data module
+            dModule.updateCurrentWord(typedWord);
+
+            // format the active word
+
+            // check if the user pressed space or enter
+            if(uModule.spacePressed() || uModule.enterPressed()){
+                
+                // empty the text input 
+
+                // deactivate (un-highlight) the current word
+
+                // move to a new word: data module
+
+                // set active word: UI module
+
+                // format the active word: UI module
+
+                // scroll word into the middle view
+            }
+        });
         // click on download button event listener
     };
 

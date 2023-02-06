@@ -118,6 +118,11 @@ var dataModule = (function (){
         }
     };
 
+    // update method: updates the word using the word typed by the user
+    word.prototype.update = function(value){
+
+    };
+
     return {
     //indicators - test Control
 
@@ -144,7 +149,10 @@ var dataModule = (function (){
 
         timeLeft: function(){}, // checks if there is time left to continue the test
 
-        testEnded: function(){}, // checks if the test has already ended
+        // checks if the test has already ended
+        testEnded: function(){
+            return appData.indicators.testEnded;
+        }, 
 
         testStarted: function(){}, // checks if the test has started
 
@@ -220,7 +228,10 @@ var dataModule = (function (){
             }
         },
 
-        updateCurrentWord: function(value) {}, // updates current word using user input
+        // updates current word using user input
+        updateCurrentWord: function(value) {
+            appData.words.currentWord.update(value);
+        }, 
 
         getLineReturn(){
             return lineReturn;
