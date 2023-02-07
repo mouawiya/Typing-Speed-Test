@@ -1,6 +1,30 @@
 var eventsModule = (function(dModule, uModule, cModule, wModule){
     var addEventListeners = function(){
         
+        // the button "Enter" click event
+        uModule.getDOMElements().textInput.addEventListener('keydown', function(event){
+
+            // if the test ended, do nothing
+            if (dModule.testEnded()){
+                return;
+            }
+
+            // check if the user pressed "Enter"
+            var key = event.keyCode;
+            if(key == 13){// 13 is the the button "enter" keyCode
+
+                uModule.getDOMElements().textInput.value += dModule.getLineReturn()+' ';
+
+                // create a new 'input' event
+                var inputEvent = new Event('input');
+
+                // dispatch it
+                uModule.getDOMElements().textInput.dispatchEvent(inputEvent);
+
+            }
+
+        });
+
         // character typing event listener
         uModule.getDOMElements().textInput.addEventListener('input', function(event){
             
@@ -26,7 +50,7 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
                 uModule.formatWord(currentWord);
 
             // check if the user pressed space or enter
-            if(uModule.spacePressed(event) || uModule.enterPressed()){
+            if(uModule.spacePressed(event) || uModule.enterPressed(dModule.getLineReturn())){
                 
                 // empty the text input 
                 uModule.emptyInput();
@@ -56,7 +80,7 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
 
     // scroll active word into middle view on window resize
     window.addEventListener('resize', uModule.scroll);
-    
+
     return {
         // init function, initializes the test before start
         init: function(duration, textNumber){

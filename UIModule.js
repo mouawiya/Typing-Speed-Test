@@ -100,7 +100,9 @@ var UIModule = (function (){
             return event.data == " ";
         },
 
-        enterPressed: function(){},
+        enterPressed: function(lineReturn){
+            return this.getTypeWord().includes(lineReturn + ' ');
+        },
 
         emptyInput: function(){
             DOMElements.textInput.value = "";
