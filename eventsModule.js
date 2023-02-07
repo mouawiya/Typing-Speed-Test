@@ -54,6 +54,9 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
         // click on download button event listener
     };
 
+    // scroll active word into middle view on window resize
+    window.addEventListener('resize', uModule.scroll);
+    
     return {
         // init function, initializes the test before start
         init: function(duration, textNumber){
