@@ -42,11 +42,15 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
                 var b = setInterval(function(){
                     // calculate the results: data Module
 
+                        var results = {};
                         // update wpm, wpmChange
+                        [results.wpm, results.wpmChange] = dModule.calculateWpm();
 
                         // update cpm, cpmChange
 
                         //update accuracy, accuracyChange
+
+                        dModule.returnData();
 
                     // update results (UI module)
 

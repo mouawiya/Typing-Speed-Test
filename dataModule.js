@@ -188,7 +188,22 @@ var dataModule = (function (){
 
     // results
         
-        calculateWpm: function(){}, // calculates wpm and wpmChange and updates them in appData
+        // calculates wpm and wpmChange and updates them in appData
+        calculateWpm: function(){
+            var wpmOld = appData.results.wpm;
+            var numOfCorrectWords = appData.results.numOfCorrectWords;
+
+            // check if the test has already started
+            if(appData.indicators.timeLeft != appData.indicators.totalTestTime){
+                Math.round(appData.results.wpm = 60* numOfCorrectWords / (appData.indicators.totalTestTime - appData.indicators.timeLeft));
+            }else {
+                appData.results.wpm =0;
+            }
+
+            appData.results.wpmChange = appData.results.wpm - wpmOld;
+
+            return [appData.results.wpm, appData.results.wpmChange];
+        }, 
 
         calculateCpm: function(){}, // calculates cpm and cpmChange and updates them in appData
 
@@ -230,10 +245,15 @@ var dataModule = (function (){
         moveToNewWord: function(){
             if (appData.words.currentWordIndex > -1){
                 // update the number of correct words
-
+                if (appData.words.currentWord.value.isCorrect == true) {
+                    appData.results.numOfCorrectWords++;
+                }
                 // update the number of correct characters
+                appData.results.numOfCorrectCharacters += appData.words.currentWord.characters.totalCorrect;
 
                 // update number of test characters
+                appData.results.numOfTestCharacters += appData.words.currentWord.characters.totalTest;
+
             }
 
             appData.words.currentWordIndex++;
