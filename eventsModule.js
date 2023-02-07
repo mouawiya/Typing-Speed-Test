@@ -26,19 +26,29 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
                 uModule.formatWord(currentWord);
 
             // check if the user pressed space or enter
-            if(uModule.spacePressed() || uModule.enterPressed()){
+            if(uModule.spacePressed(event) || uModule.enterPressed()){
                 
                 // empty the text input 
+                uModule.emptyInput();
 
                 // deactivate (un-highlight) the current word
+                uModule.deactivateCurrentWord();
+                
+                // move to a new word: dataModule
+                dModule.moveToNewWord();
 
-                // move to a new word: data module
+                // set active word: UIModule
+                // get the correct current word index
+                var index = dModule.getCurrentWordIndex();
+                uModule.setActiveWord(index);
 
-                // set active word: UI module
-
-                // format the active word: UI module
+                // format the active word: UIModule
+                // get the current word value
+                currentWord = dModule.getCurrentWord();
+                uModule.formatWord(currentWord);
 
                 // scroll word into the middle view
+                uModule.scroll();
             }
         });
         // click on download button event listener
