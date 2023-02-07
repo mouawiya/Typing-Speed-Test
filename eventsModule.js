@@ -58,11 +58,15 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
                         
                         // check if we have time left
 
-                            //yes:
-                            // reduce time by one sec in data module
+                            if (dModule.timeLeft()){
+                                
+                                //yes:
+                                // reduce time by one sec in data module by 1 second
+                                var timeLeft = dModule.reduceTime();
 
-                            // update time remaining in UI module
-
+                                // update time remaining in UI module
+                                uModule.updateTimeLeft(timeLeft); 
+                            }
 
                             //no:
                             // end the test: data module
@@ -70,6 +74,8 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
                             // fill modal
 
                             // show modal
+
+
                 }, 1000);
             }
 

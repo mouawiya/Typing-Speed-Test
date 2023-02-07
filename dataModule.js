@@ -43,8 +43,6 @@ var dataModule = (function (){
             var remainingChar = this.slice(1)
             // concat the first and the rest of string
             newString = firstCharCap+remainingChar;
-            
-
             return newString;
         };
   
@@ -141,7 +139,7 @@ var dataModule = (function (){
         // example
         // correct: ['w', 'o', 'r', 'd']
         // user: ['w', 'o', 'o', 'w', 'w', 'w', 'w', 'w']
-        var nbCorrectChar = 0; 
+        nbCorrectChar = 0; 
 
         // the charCallback function is defined above
         charCallback2 = charCallback.bind(this); // we used this because "this" in the charCallBack function will refere to the global object, but "bind" will link it to our instance class
@@ -175,16 +173,26 @@ var dataModule = (function (){
             return appData.indicators.timeLeft;
         }, 
 
-        reduceTime: function(){}, // reduces the time by one sec
+        // reduces the time by one sec and return the new time
+        reduceTime: function(){
+            appData.indicators.timeLeft --;
+            return appData.indicators.timeLeft;
+        }, 
 
-        timeLeft: function(){}, // checks if there is time left to continue the test
+        // checks if there is time left to continue the test
+        timeLeft: function(){
+            return appData.indicators.timeLeft != 0;
+        }, 
 
         // checks if the test has already ended
         testEnded: function(){
             return appData.indicators.testEnded;
         }, 
 
-        testStarted: function(){}, // checks if the test has started
+        // checks if the test has started
+        testStarted: function(){
+            return appData.indicators.testStarted;
+        }, 
 
     // results
         
@@ -195,15 +203,15 @@ var dataModule = (function (){
 
             // check if the test has already started
             if(appData.indicators.timeLeft != appData.indicators.totalTestTime){
-                Math.round(appData.results.wpm = 60* numOfCorrectWords / (appData.indicators.totalTestTime - appData.indicators.timeLeft));
+                appData.results.wpm = Math.round(60* numOfCorrectWords / (appData.indicators.totalTestTime - appData.indicators.timeLeft));
             }else {
-                appData.results.wpm =0;
+                appData.results.wpm = 0;
             }
 
             appData.results.wpmChange = appData.results.wpm - wpmOld;
 
             return [appData.results.wpm, appData.results.wpmChange];
-        }, 
+        },  
 
         calculateCpm: function(){}, // calculates cpm and cpmChange and updates them in appData
 
@@ -246,7 +254,7 @@ var dataModule = (function (){
             if (appData.words.currentWordIndex > -1){
                 // update the number of correct words
                 if (appData.words.currentWord.value.isCorrect == true) {
-                    appData.results.numOfCorrectWords++;
+                    appData.results.numOfCorrectWords ++;
                 }
                 // update the number of correct characters
                 appData.results.numOfCorrectCharacters += appData.words.currentWord.characters.totalCorrect;
@@ -256,7 +264,7 @@ var dataModule = (function (){
 
             }
 
-            appData.words.currentWordIndex++;
+            appData.words.currentWordIndex ++;
             var currentIndex = appData.words.currentWordIndex;
             var newWord = new word(currentIndex);
             appData.words.currentWord = newWord;
