@@ -50,6 +50,7 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
                         [results.cpm, results.cpmChange] = dModule.calculateCpm();
 
                         //update accuracy, accuracyChange
+                        [results.accuracy, results.accuracyChange] = dModule.calculateAccuracy();
 
                         dModule.returnData();
 
