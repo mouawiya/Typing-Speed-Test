@@ -334,6 +334,13 @@ var dataModule = (function (){
             return lineReturn;
         },
 
+        getCertificateData(){
+            return {
+                wpm: appData.results.wpm,
+                accuracy: appData.results.accuracy,
+            };
+        },
+
         // just a testing method
         returnData(){
             console.log(appData);

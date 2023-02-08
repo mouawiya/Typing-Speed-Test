@@ -16,16 +16,17 @@ var UIModule = (function (){
         // user input
         textInput: document.querySelector('#input'),
         nameInput: document.querySelector('.form-group'),
+        nameField: document.getElementById('name'),
 
         // test words
         content: document.getElementById('content'), 
         activeWord:'',
 
-        // download button
-        download: document.getElementById('#download'),
-
         // modal
-        modal: $('#myModal')
+        modal: $('#myModal'),
+
+        // download button
+        download: document.getElementById('download'),
     };
 
     // a method that split each word into characters
@@ -102,6 +103,7 @@ var UIModule = (function (){
         getDOMElements: function(){
             return {
                 textInput: DOMElements.textInput,
+                download: DOMElements.download
             };
         },
 
@@ -174,9 +176,13 @@ var UIModule = (function (){
             DOMElements.textInput.focus();
         },
 
-        isNameEmpty: function(){},
+        isNameEmpty: function(){
+            return DOMElements.nameField.value == '';
+        },
 
-        flagNameInput: function(){},
+        flagNameInput: function(){
+            DOMElements.nameField.style.borderColor = 'red';
+        },
 
         spacePressed: function(event){
             return event.data == " ";
