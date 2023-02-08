@@ -17,114 +17,103 @@
                     <h1>Typing Test</h1>
                 </header>
                 <div class="row">
-                    <!-- using bootstrap "row" and col-xs; xs means extra small elements-->
                     <div class="col-3 measurement">
-
                         <div class="meas_container">
                             <div class="typingIcon">
-                                <img src="images/speed2.png" width= "60">
+                                <img src="images/speed2.png" width="60">
                             </div>
-                            <div id="wpm" class="value">0</div>
-                            <div class="title"><span>WPM</span></div>
+                            <div id="wpm" class="value">0
+                            </div>
+                            <div class="title"><span>WPM</span>
+                            </div>
                         </div>
-
                         <div class="change">
                             <span id="wpmChange"></span>
                         </div>
-                        
                     </div>
-
                     <div class="col-3 measurement">
-
                         <div class="meas_container">
                             <div class="typingIcon">
-                                <img src="images/cpm.png" width= "30">
+                                <img src="images/cpm.png" width="30">
                             </div>
-                            <div id="cpm" class="value">0</div>
-                            <div class="title"><span>CPM</span></div>
+                            <div id="cpm" class="value">0
+                            </div>
+                            <div class="title"><span>CPM</span>
+                            </div>
                         </div>
-
                         <div class="change">
                             <span id="cpmChange"></span>
                         </div>
-                        
                     </div>
-
                     <div class="col-3 measurement">
-
                         <div class="meas_container">
                             <div class="typingIcon">
-                                <img src="images/accuracy.png" width= "50">
+                                <img src="images/accuracy.png" width="50">
                             </div>
-                            <div id="accuracy" class="value">0%</div>
-                            <div class="title"><span>Accuracy</span></div>
+                            <div id="accuracy" class="value">0%
+                            </div>
+                            <div class="title"><span>Accuracy</span>
+                            </div>
                         </div>
-
                         <div class="change">
                             <span id="accuracyChange"></span>
                         </div>
-                        
                     </div>
-
                     <div class="col-3 measurement">
-
                         <div class="meas_container">
                             <div class="typingIcon">
-                                <img src="images/stopwatch.png" width= "45">
+                                <img src="images/stopwatch.png" width="45">
                             </div>
-                            <div id="timeLeft" class="value">60</div>
-                            <div class="title"><span>Time Left</span></div>
+                            <div id="timeLeft" class="value">60
+                            </div>
+                            <div class="title"><span>Time Left</span>
+                            </div>
                         </div>
-
                     </div>
                 </div>
-
+                
 <!--                test words-->
-                <div id="content" class="text-center">
-
-                </div>
-
+                <div id="content" class="text-center"></div>
+                
 <!--                text input-->
                 <div>
                     <input type="text" placeholder="type here" class="text-center" id="input">
                 </div>
-
+                
 <!--                keyboard-->
                 <div class="keyboard"></div>
-
+                
 <!--                restart-->
                 <div class="restart">
-                    <!-- the classes in the button are predefined in bootstrap
-                    the onClick is a predefined function that reload the page-->
                     <button type="button" class="btn btn-primary btn-lg" onclick="location.reload()">Restart</button>
                 </div>
-
-<!--                modal: used using bootstrap-->
+                
+<!--                modal-->
                 <div class="modal" id="myModal">
-                    <div class="modal-dialog" role="document">
+                  <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                        <div class="modal-header">
+                      <div class="modal-header">
                         <h5 class="modal-title">You finished your test!</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                          <span aria-hidden="true">&times;</span>
                         </button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- form-group is used with bootstrap to group the form data-->
-                            <div class="form-group">
-                                <label for="name" class="sr-only">Enter your name: </label>
-                                <input type="text" class="form-control" id="name" placeholder="Your full name">
-                            
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="form-group">
+                              <label for="name" class="sr-only">Enter your name: </label>
+                              <input type="text" class="form-control" id="name" placeholder="Your full name">
+                          
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-info" id="download">Download your certificate</button>
                     
-                        </div>
+                      </div>
                     </div>
-                    </div>
+                  </div>
                 </div>
+                
             </div>
         </div>
 

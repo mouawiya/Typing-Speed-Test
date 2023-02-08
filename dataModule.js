@@ -232,6 +232,7 @@ var dataModule = (function (){
 
         // calculates accuracy and accuracyChange and updates them in appData
         calculateAccuracy: function(){
+
             var accuracyOld = appData.results.accuracy;
             var numOfCorrectCharacters = appData.results.numOfCorrectCharacters;
             var numOfTestCharacters = appData.results.numOfTestCharacters;
@@ -248,7 +249,6 @@ var dataModule = (function (){
             }
 
             appData.results.accuracyChange = appData.results.accuracy - accuracyOld;
-           
 
             return [appData.results.accuracy, appData.results.accuracyChange];
         }, 

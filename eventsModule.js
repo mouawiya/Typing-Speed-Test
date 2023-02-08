@@ -52,10 +52,10 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
                         //update accuracy, accuracyChange
                         [results.accuracy, results.accuracyChange] = dModule.calculateAccuracy();
 
-                        dModule.returnData();
+                        
 
                     // update results (UI module)
-
+                        uModule.updateResults(results);
                     // update time left
                         
                         // check if we have time left
