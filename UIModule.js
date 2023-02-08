@@ -21,6 +21,9 @@ var UIModule = (function (){
         content: document.getElementById('content'), 
         activeWord:'',
 
+        // download button
+        download: document.getElementById('#download'),
+
         // modal
         modal: $('#myModal')
     };
@@ -126,9 +129,44 @@ var UIModule = (function (){
             updateChange(results.accuracyChange, DOMElements.accuracyChange);
         },
 
-        fillModal: function(){},
+        fillModal: function(wpm){
+            var results;
+            if(wpm<40){
+                results = {
+                    type: 'turtle',
+                    image: 'turtle.jpg',
+                    level: 'Beginner'
+                }
+            }else if(wpm<70){
+                results = {
+                    type: 'horse',
+                    image: 'horse.jpg',
+                    level: 'Average'
+                }
+            }else{
+                results = {
+                    type: 'puma',
+                    image: 'puma.jpg',
+                    level: 'Expert'
+                }
+            }
+            
+            var html = '<div class="result"> <p>You are a %type%!</p> <p>You type at a speed of %wpm% words per minute</p> <img width="300" height="200" class="rounded-circle" src = "images/%image%" alt=%alt%></div>';
+            html = html.replace('%type', results.type);
+            html = html.replace('%wpm%', wpm);
+            html = html.replace('%image%', results.image);
+            html = html.replace('%alt%', results.type);
+
+            // insert the html before form-group
+            DOMElements.nameInput.insertAdjacentHTML('beforebegin',html);
+
+            // store the level in the download button
+            DOMElements.download.setAttribute('level', results.level); // setAttribute is used to create a new attribute inside the button
+        },
         
-        showModal: function(){},
+        showModal: function(){
+            DOMElements.modal.modal('show'); // the method "modal" is a bootstrap method used to show the modal
+        },
     
     // user input
         

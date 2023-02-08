@@ -52,8 +52,6 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
                         //update accuracy, accuracyChange
                         [results.accuracy, results.accuracyChange] = dModule.calculateAccuracy();
 
-                        
-
                     // update results (UI module)
                         uModule.updateResults(results);
                     // update time left
@@ -68,15 +66,18 @@ var eventsModule = (function(dModule, uModule, cModule, wModule){
 
                                 // update time remaining in UI module
                                 uModule.updateTimeLeft(timeLeft); 
+
+                            }else {
+                                //no:
+                                // end the test: data module
+                                clearInterval(b); // stop the set interval function which update the results every second
+                                dModule.endsTest();
+                                
+                                // fill modal
+                                uModule.fillModal(results.wpm);
+                                // show modal
+                                uModule.showModal();
                             }
-
-                            //no:
-                            // end the test: data module
-
-                            // fill modal
-
-                            // show modal
-
 
                 }, 1000);
             }
