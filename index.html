@@ -16,6 +16,7 @@
                 <header>
                     <h1>Typing Test</h1>
                 </header>
+                <!-- using bootstrap "row" and col-xs; xs means extra small elements-->
                 <div class="row">
                     <div class="col-3 measurement">
                         <div class="meas_container">
@@ -85,10 +86,12 @@
                 
 <!--                restart-->
                 <div class="restart">
+                    <!-- the classes in the button are predefined in bootstrap
+                    the onClick is a predefined function that reload the page-->
                     <button type="button" class="btn btn-primary btn-lg" onclick="location.reload()">Restart</button>
                 </div>
                 
-<!--                modal-->
+<!--                modal used using bootstrap-->
                 <div class="modal" id="myModal">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -99,6 +102,7 @@
                             </button>
                       </div>
                       <div class="modal-body">
+                            <!-- form-group is used with bootstrap to group the form data-->
                           <div class="form-group">
                               <label for="name" class="sr-only">Enter your name: </label>
                               <input type="text" class="form-control" id="name" placeholder="Your full name">

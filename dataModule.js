@@ -82,7 +82,7 @@ var dataModule = (function (){
     // character call back used to calculate the number of correct characters inside the current word
     var nbCorrectChar;
     var charCallback = function(currentElement, index){
-        nbCorrectChar += (currentElement == this.characters.user[index])? 1 : 0; // this check if we ill increase te value of x by 1 or 0 deppendin on the condition (it can be written with an if())
+        nbCorrectChar += (currentElement == this.characters.user[index])? 1 : 0; // this check if we will increase te value of x by 1 or 0 deppendin on the condition (it can be written with an if())
     };    
 
     var appData = {
